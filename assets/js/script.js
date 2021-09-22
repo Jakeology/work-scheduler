@@ -32,7 +32,7 @@ var auditSchedule = function () {
     }
   });
 
-  //auditLocalStorage();
+  auditLocalStorage();
 
 };
 
