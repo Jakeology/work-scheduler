@@ -31,7 +31,23 @@ var auditSchedule = function () {
       $("#" + id + "-desc").addClass("list-group-item-info");
     }
   });
+
+  //auditLocalStorage();
+
 };
+
+var auditLocalStorage = function() {
+  var keys = Object.keys(localStorage);
+  for(var i=0; i < keys.length; i++){
+    var keyDate = keys[i];
+    var convertKeyDate = moment(keyDate, "MM-DD-YYYY");
+
+    if(!moment().isSame(convertKeyDate, 'day')) {
+      localStorage.removeItem(keyDate);
+      location.reload();
+    }
+  }
+}
 
 var convertNumberToId = function (number) {
   var numberNames = [
@@ -57,12 +73,12 @@ var saveSchedule = function (id) {
 
   schedule[id] = text;
 
-  if(!text) {
-    if(id in schedule) {
+  if (!text) {
+    if (id in schedule) {
       delete schedule[id];
     }
   }
-  
+
   localStorage.setItem(getScheduleFormat, JSON.stringify(schedule));
 };
 
@@ -78,4 +94,5 @@ loadSchedule();
 //TODO change back to 30 fom 5
 setInterval(function () {
   auditSchedule();
-}, 1000 * 60 * 5);
+  auditLocalStorage();
+}, 1000 * 60 * 1);
