@@ -1,5 +1,5 @@
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
 }
@@ -77,10 +77,11 @@ button:focus {
   background-color: #06aed5;
   border-left: 4px solid #008cac;
   color: white;
-  padding: 15px;
+  font-size: 28px;
+  padding: 25px;
 }
 
 .saveBtn:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
+  font-size: 36px;
+  transition: all 0.1s ease-in-out;
 }

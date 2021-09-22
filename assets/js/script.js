@@ -91,7 +91,6 @@ $("button").on("click", function () {
 loadSchedule();
 
 //Runs every 30 minutes to update the schedule audit.
-//TODO change back to 30 fom 5
 setInterval(function () {
   auditSchedule();
   auditLocalStorage();
