@@ -1,7 +1,7 @@
 var getCurrentDayFormat = moment().format("dddd, MMMM Do");
 var getScheduleFormat = moment().format("MM-DD-YYYY");
 
-var schedule;
+var schedule = {};
 
 var loadSchedule = function () {
   schedule = JSON.parse(localStorage.getItem(getScheduleFormat));
@@ -11,7 +11,7 @@ var loadSchedule = function () {
   }
 
   $.each(schedule, function (key, val) {
-    $('#' + key + '-desc').val(val);
+    $("#" + key + "-desc").val(val);
   });
 
   auditSchedule();
@@ -56,6 +56,13 @@ var saveSchedule = function (id) {
   var text = $("#" + id + "-desc").val();
 
   schedule[id] = text;
+
+  if(!text) {
+    if(id in schedule) {
+      delete schedule[id];
+    }
+  }
+  
   localStorage.setItem(getScheduleFormat, JSON.stringify(schedule));
 };
 
@@ -68,6 +75,7 @@ $("button").on("click", function () {
 loadSchedule();
 
 //Runs every 30 minutes to update the schedule audit.
+//TODO change back to 30 fom 5
 setInterval(function () {
-    auditSchedule();
-},(1000 * 60) * 30);
+  auditSchedule();
+}, 1000 * 60 * 5);
