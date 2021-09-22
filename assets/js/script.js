@@ -95,4 +95,4 @@ loadSchedule();
 setInterval(function () {
   auditSchedule();
   auditLocalStorage();
-}, 1000 * 60 * 1);
+}, 1000 * 60 * 30);
