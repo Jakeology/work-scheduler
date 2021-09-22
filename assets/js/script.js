@@ -66,3 +66,8 @@ $("button").on("click", function () {
 });
 
 loadSchedule();
+
+//Runs every 30 minutes to update the schedule audit.
+setInterval(function () {
+    auditSchedule();
+},(1000 * 60) * 30);
